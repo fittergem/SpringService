@@ -1,0 +1,9 @@
+[package]
+name = "fittergem/springservice"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index/tree/main/fittergem"
+realm = "shared"
+authors = ["Fittergem"]
+description = "A Roblox UI animation service"
+
+[dependencies]
