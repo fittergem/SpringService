@@ -290,6 +290,30 @@ function Spring:Play()
 				self.Instance[property] = UDim2.new(s1, s2, s3, s4)
 			end
 
+			if typeof(targetValue) == "Color3" then
+				local r = self.Instance[property].R
+				local g = self.Instance[property].G
+				local b = self.Instance[property].B
+				
+				local s1, s2, s3 = 0, 0, 0
+				local v1, v2, v3 = 0, 0, 0
+
+				for i, v in pairs(velocities) do
+					if i == property then
+						v1, v2, v3 = unpack(v)
+						break
+					end
+				end
+
+				s1, v1 = SpringAnimation(r, targetValue.R, v1, self.Response, self.Damping, deltaTime)
+				s2, v2 = SpringAnimation(g, targetValue.G, v2, self.Response, self.Damping, deltaTime)
+				s3, v3 = SpringAnimation(b, targetValue.B, v3, self.Response, self.Damping, deltaTime)
+
+				velocities[property] = { v1, v2, v3 }
+				
+				self.Instance[property] = Color3.new(s1, s2, s3)
+			end
+
 			if typeof(targetValue) == "Vector2" then
 				local x = self.Instance[property].X
 				local y = self.Instance[property].Y
